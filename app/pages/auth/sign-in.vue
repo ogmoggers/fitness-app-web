@@ -69,10 +69,11 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import Card from "@/src/shared/components/Card/Card.vue";
-import Form from "@/src/shared/components/Form/Form.vue";
-import { validateLogin, type LoginInput } from "@/src/shared/utils/auth";
+import Card from "~/shared/components/Card/Card.vue";
+import Form from "~/shared/components/Form/Form.vue";
+import { validateLogin, type LoginInput } from "~/shared/utils/auth";
 
+definePageMeta({ layout: "auth" });
 const error = ref("");
 
 const handleSignUp = (data: Record<string, any>) => {
