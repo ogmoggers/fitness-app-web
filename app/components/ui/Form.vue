@@ -1,10 +1,10 @@
 <template>
-  <form @submit.prevent="handleSubmit" class="flex flex-col gap-4">
+  <form @submit.prevent="handleSubmit" class="flex flex-col gap-6">
     <slot :formData="formData" :updateField="updateField" />
 
     <div class="mt-2">
       <slot name="actions">
-        <UButton size="xl" type="submit" class="w-full text-white cursor-pointer" block>
+        <UButton size="xl" type="submit" class="w-full" block>
           {{ submitText }}
         </UButton>
       </slot>
