@@ -1,13 +1,16 @@
 import type { SetData } from "./Set";
-import type { Workout } from "./Workout";
 
 export type Exercise = {
   id: string;
+  workout_id: string;
+  exercise_library_id: string;
+  rest_seconds: number;
+  order_index: number;
+  created_at: Date;
+  updated_at: Date;
+  
+  // TODO: добавить в бэке
   sets: SetData[];
-  totalWeight: number;
-  totalReps: number;
-  workout: Workout;
-  createdAt: Date;
-  updatedAt: Date;
-  libraryID: string;
+  total_weight: number;
+  total_reps: number;
 };

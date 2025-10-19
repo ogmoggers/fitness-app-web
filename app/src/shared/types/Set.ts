@@ -1,10 +1,9 @@
-import type { Exercise } from "./Exercise";
-
 export type SetData = {
   id: string;
-  weight: SetData[];
+  weight: number;
   reps: number;
-  exercise: Exercise;
-  createdAt: Date;
-  updatedAt: Date;
+  order_index: number;
+  workout_exercise_id: string;
+  created_at: Date;
+  updated_at: Date;
 };

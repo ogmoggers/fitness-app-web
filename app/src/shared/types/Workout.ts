@@ -1,12 +1,11 @@
 import type { Exercise } from "./Exercise";
-import type { User } from "./User";
 
 export type Workout = {
   id: string;
   title: string;
+  user_id: string;
   date: Date;
   exercises: Exercise[];
-  user: User;
-  createdAt: Date;
-  updatedAt: Date;
+  created_at: Date;
+  updated_at: Date;
 };
