@@ -69,9 +69,9 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import Card from "~/shared/components/Card/Card.vue";
-import Form from "~/shared/components/Form/Form.vue";
-import { validateLogin, type LoginInput } from "~/shared/utils/auth";
+import Card from "@/components/ui/Card.vue";
+import Form from "@/components/ui/Form.vue";
+import { validateLogin, type LoginInput } from "@/shared/utils/auth";
 
 definePageMeta({ layout: "auth" });
 const error = ref("");

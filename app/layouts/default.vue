@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import Header from "~/shared/components/Header/Header.vue";
+import Header from "@/components/layout/Header.vue";
 
 export default {
   components: {

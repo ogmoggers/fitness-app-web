@@ -12,7 +12,8 @@
           submitText="Зарегистрироваться"
           @submit="handleRegister"
         >
-          <template #default="{ formData, updateField }">
+          <!-- <template #default="{ formData, updateField }"> -->
+            <template v-slot="{ formData, updateField }">
             <div class="flex flex-col gap-2">
               <label for="email">Email</label>
               <UInput
@@ -86,9 +87,9 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import Card from "~/shared/components/Card/Card.vue";
-import Form from "~/shared/components/Form/Form.vue";
-import { validateRegister, type RegisterInput } from "~/shared/utils/auth";
+import Card from "@/components/ui/Card.vue";
+import Form from "@/components/ui/Form.vue";
+import { validateRegister, type RegisterInput } from "@/shared/utils/auth";
 
 definePageMeta({ layout: "auth" });
 
