@@ -10,16 +10,16 @@
 
         <div class="flex flex-wrap gap-3 text-sm">
           <div class="flex items-center gap-1">
-            <span class="text-gray-500">Упражнений:</span>
+            <span class="text-gray-500">Exercises:</span>
             <span class="font-medium">{{ workout.exercises.length }}</span>
           </div>
           <div class="flex items-center gap-1">
-            <span class="text-gray-500">Подходов:</span>
+            <span class="text-gray-500">Approaches:</span>
             <span class="font-medium">{{ totalSets }}</span>
           </div>
           <div class="flex items-center gap-1">
-            <span class="text-gray-500">Объём:</span>
-            <span class="font-medium">{{ totalVolume }} кг</span>
+            <span class="text-gray-500">Volume:</span>
+            <span class="font-medium">{{ totalVolume }} kg</span>
           </div>
         </div>
       </div>

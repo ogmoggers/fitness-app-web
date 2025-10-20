@@ -2,21 +2,21 @@ import { z } from "zod";
 
 export const registerSchema = z
   .object({
-    email: z.string().min(1, "Email обязателен").email("Некорректный email"),
+    email: z.string().min(1, "Email is required").email("Incorrect email"),
     password: z
       .string()
-      .min(8, "Пароль должен быть минимум 8 символов")
-      .max(100, "Пароль слишком длинный"),
-    confirmPassword: z.string().min(1, "Подтверждение пароля обязательно"),
+      .min(8, "The password must be at least 8 characters long.")
+      .max(100, "The password is too long"),
+    confirmPassword: z.string().min(1, "Password confirmation is required"),
   })
   .refine((data) => data.password === data.confirmPassword, {
-    message: "Пароли не совпадают",
+    message: "Passwords don't match",
     path: ["confirmPassword"],
   });
 
 export const loginSchema = z.object({
-  email: z.string().min(1, "Email обязателен").email("Некорректный email"),
-  password: z.string().min(1, "Пароль обязателен"),
+  email: z.string().min(1, "Email is required").email("Incorrect email"),
+  password: z.string().min(1, "Password is required"),
 });
 
 export type RegisterInput = z.infer<typeof registerSchema>;

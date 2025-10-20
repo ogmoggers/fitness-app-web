@@ -3,17 +3,17 @@
     <div class="w-full max-w-md">
       <Card>
         <div class="mb-6">
-          <h1 class="text-2xl font-bold mb-2">Регистрация</h1>
-          <p>Создайте новый аккаунт</p>
+          <h1 class="text-2xl font-bold mb-2">Registration</h1>
+          <p>Create a new account</p>
         </div>
 
         <Form
           :initialData="{ email: '', password: '', confirmPassword: '' }"
-          submitText="Зарегистрироваться"
+          submitText="Register"
           @submit="handleRegister"
         >
           <!-- <template #default="{ formData, updateField }"> -->
-            <template v-slot="{ formData, updateField }">
+          <template v-slot="{ formData, updateField }">
             <div class="flex flex-col gap-2">
               <label for="email">Email</label>
               <UInput
@@ -32,7 +32,7 @@
             </div>
 
             <div class="flex flex-col gap-2">
-              <label for="password">Пароль</label>
+              <label for="password">Password</label>
               <UInput
                 id="password"
                 type="password"
@@ -49,7 +49,7 @@
             </div>
 
             <div class="flex flex-col gap-2">
-              <label for="confirmPassword">Подтвердите пароль</label>
+              <label for="confirmPassword">Confirm the password</label>
               <UInput
                 id="confirmPassword"
                 type="password"
@@ -77,7 +77,7 @@
             class="underline cursor-pointer"
             @click="$router.push('/auth/sign-in')"
           >
-            Уже есть аккаунт?
+            Already have an account?
           </UButton>
         </div>
       </Card>
@@ -101,14 +101,14 @@ const handleRegister = (data: Record<string, any>) => {
 
   if (!result.success) {
     const firstError = result.error.issues[0];
-    error.value = firstError?.message || "Ошибка валидации";
+    error.value = firstError?.message || "Validation error";
     return;
   }
 
   const validData = result.data as RegisterInput;
 
   // TODO: Реализовать регистрацию пользователя когда в бэке будет
-  console.log("Регистрация:", {
+  console.log("Registration:", {
     email: validData.email,
     password: validData.password,
   });

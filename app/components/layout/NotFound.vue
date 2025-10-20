@@ -7,16 +7,16 @@
 
       <div class="space-y-2">
         <h2 class="text-3xl font-semibold text-gray-900 dark:text-white">
-          Страница не найдена
+          Page not found
         </h2>
         <p class="text-gray-600 dark:text-gray-400 max-w-md">
-          К сожалению, запрашиваемая страница не существует или была перемещена
+          Unfortunately, the requested page does not exist or has been moved.
         </p>
       </div>
 
       <div class="flex gap-3 justify-center pt-4">
         <UButton to="/" size="lg" color="primary" icon="i-heroicons-home">
-          На главную
+          Go to the main page
         </UButton>
         <UButton
           @click="$router.back()"
@@ -25,7 +25,7 @@
           variant="ghost"
           icon="i-heroicons-arrow-left"
         >
-          Назад
+          Back
         </UButton>
       </div>
     </div>

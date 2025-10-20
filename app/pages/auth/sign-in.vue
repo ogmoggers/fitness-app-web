@@ -3,13 +3,13 @@
     <div class="w-full max-w-md">
       <Card>
         <div class="mb-6">
-          <h1 class="text-2xl font-bold mb-2">Вход</h1>
-          <p>Войдите в свой аккаунт</p>
+          <h1 class="text-2xl font-bold mb-2">Login</h1>
+          <p>Login to your account</p>
         </div>
 
         <Form
           :initialData="{ email: '', password: '' }"
-          submitText="Войти"
+          submitText="Login"
           @submit="handleSignUp"
         >
           <template #default="{ formData, updateField }">
@@ -31,7 +31,7 @@
             </div>
 
             <div class="flex flex-col gap-2">
-              <label for="password">Пароль</label>
+              <label for="password">Password</label>
               <UInput
                 id="password"
                 type="password"
@@ -59,7 +59,7 @@
             class="underline cursor-pointer"
             @click="$router.push('/auth/sign-up')"
           >
-            Нет аккаунта? Зарегистрируйтесь
+            No account? Register
           </UButton>
         </div>
       </Card>
@@ -82,14 +82,14 @@ const handleSignUp = (data: Record<string, any>) => {
 
   if (!result.success) {
     const firstError = result.error.issues[0];
-    error.value = firstError?.message || "Ошибка валидации";
+    error.value = firstError?.message || "Validation error";
     return;
   }
 
   const validData = result.data as LoginInput;
 
   // TODO: Реализовать вход пользователя когда в бэке будет
-  console.log("Вход:", {
+  console.log("Login:", {
     email: validData.email,
     password: validData.password,
   });

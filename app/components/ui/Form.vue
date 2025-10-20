@@ -22,7 +22,7 @@ interface Props {
 
 const props = withDefaults(defineProps<Props>(), {
   initialData: () => ({}),
-  submitText: "Отправить",
+  submitText: "Submit",
 });
 
 const emit = defineEmits<{

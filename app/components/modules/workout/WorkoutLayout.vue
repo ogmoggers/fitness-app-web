@@ -10,18 +10,20 @@
         name="i-heroicons-clipboard-document-list"
         class="text-6xl mb-4 text-gray-400"
       />
-      <h2 class="text-2xl font-bold mb-2">У вас не имеется тренировок</h2>
-      <p class="text-gray-500 mb-6">Давайте создадим вашу первую тренировку</p>
+      <h2 class="text-2xl font-bold mb-2">
+        You don't have any training sessions
+      </h2>
+      <p class="text-gray-500 mb-6">Let's create your first workout</p>
       <UButton size="lg" icon="i-heroicons-plus" @click="handleCreateWorkout">
-        Создать тренировку
+        Create workout
       </UButton>
     </div>
 
     <div v-else class="space-y-4">
       <div class="flex justify-between items-center mb-6">
-        <h1 class="text-3xl font-bold">Мои тренировки</h1>
+        <h1 class="text-3xl font-bold">My workouts</h1>
         <UButton icon="i-heroicons-plus" @click="handleCreateWorkout">
-          Создать
+          Create
         </UButton>
       </div>
 
@@ -57,8 +59,8 @@ const fetchWorkouts = async () => {
   } catch (error) {
     console.error("Error fetching workouts:", error);
     toast.add({
-      title: "Ошибка",
-      description: "Не удалось загрузить тренировки",
+      title: "Error",
+      description: "Couldn't upload workouts",
       color: "red",
     });
     workouts.value = [];
@@ -72,10 +74,10 @@ const handleCreateWorkout = () => {
 };
 
 const handleWorkoutCreate = (data: any) => {
-  console.log("Создание тренировки:", data);
+  console.log("Creating a workout:", data);
   toast.add({
-    title: "Успех",
-    description: "Тренировка создана",
+    title: "Success",
+    description: "Workout created",
     color: "green",
   });
 };

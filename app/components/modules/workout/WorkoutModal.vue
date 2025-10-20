@@ -1,19 +1,19 @@
 <template>
-  <Modal v-model="isOpen" title="Создать тренировку">
+  <Modal v-model="isOpen" title="Create a workout">
     <Form
       :initial-data="initialFormData"
-      submit-text="Создать"
+      submit-text="Create"
       @submit="handleSubmit"
     >
       <template #default="{ formData, updateField }">
         <div class="space-y-6">
           <div>
             <label class="block text-lg font-medium mb-2">
-              Название тренировки
+              Name of the workout
             </label>
             <UInput
               :model-value="formData.title"
-              placeholder="Например: Грудь и Трицепс"
+              placeholder="For example: Chest and Triceps"
               size="lg"
               class="w-full"
               @update:model-value="updateField('title', $event)"
@@ -21,7 +21,7 @@
           </div>
 
           <div>
-            <label class="block text-lg font-medium mb-2">Дата и время</label>
+            <label class="block text-lg font-medium mb-2">Date and time</label>
             <UPopover :popper="{ placement: 'bottom-start' }">
               <UButton
                 color="white"
@@ -52,11 +52,11 @@
             <label
               class="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300"
             >
-              Описание (опционально)
+              Description (optional)
             </label>
             <UTextarea
               :model-value="formData.description"
-              placeholder="Добавьте описание тренировки"
+              placeholder="Add a description of workout"
               :rows="4"
               class="w-full"
               @update:model-value="updateField('description', $event)"
