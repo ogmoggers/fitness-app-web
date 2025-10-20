@@ -40,6 +40,7 @@
 import { ref, onMounted } from "vue";
 import type { Workout } from "@/shared/types/workout";
 import WrapperLoader from "@/components/ui/WrapperLoader.vue";
+import WorkoutCard from "@/components/modules/workout/WorkoutCard.vue";
 import { mockUser } from "@/shared/mockData";
 
 const toast = useToast();

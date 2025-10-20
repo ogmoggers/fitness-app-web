@@ -1,6 +1,6 @@
 <template>
   <header
-    class="border-b border-gray-200 dark:border-gray-800 mb-4"
+    class="border-b border-gray-200 dark:border-gray-800"
   >
     <UContainer class="container mx-auto px-4">
       <div class="flex h-16 items-center justify-between">

@@ -1,7 +1,7 @@
 <template>
   <UApp>
     <Header />
-    <UContainer class="max-w-[1080px] mx-auto px-3 py-4">
+    <UContainer class="max-w-[1080px] mx-auto px-5 py-4">
       <slot />
     </UContainer>
   </UApp>
