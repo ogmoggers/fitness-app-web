@@ -1,6 +1,6 @@
 <template>
   <div class="workout-layout p-4 max-w-7xl mx-auto">
-    <Loader v-if="loading" />
+    <WrapperLoader v-if="loading" />
 
     <div
       v-else-if="!workouts || workouts.length === 0"
@@ -39,7 +39,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
 import type { Workout } from "@/shared/types/workout";
-import Loader from "@/components/ui/Loader.vue";
+import WrapperLoader from "@/components/ui/WrapperLoader.vue";
 import { mockUser } from "@/shared/mockData";
 
 const toast = useToast();
