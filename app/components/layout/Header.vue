@@ -1,21 +1,20 @@
 <template>
-  <header
-    class="border-b border-gray-200 dark:border-gray-800"
-  >
-    <UContainer class="container mx-auto px-4">
-      <div class="flex h-16 items-center justify-between">
-        <div class="flex items-center gap-2 cursor-pointer" @click="navigateTo('/')">
+  <header class="border-b border-gray-200 dark:border-gray-800">
+    <UContainer class="mx-auto px-3 sm:px-4 lg:px-6">
+      <div class="grid grid-cols-[1fr_auto_1fr] items-center h-16">
+        <div
+          class="flex items-center gap-2 cursor-pointer"
+          @click="navigateTo('/')"
+        >
           <div
             class="flex h-9 w-9 items-center justify-center rounded-lg bg-primary text-white font-bold"
           >
             FT
           </div>
-          <span class="text-lg font-semibold"
-            >FitTracker</span
-          >
+          <span class="text-lg font-semibold hidden md:block">FitTracker</span>
         </div>
 
-        <nav class="flex items-center gap-1">
+        <nav class="flex justify-center items-center gap-1">
           <a
             v-for="item in navItems"
             :key="item.name"
@@ -32,13 +31,14 @@
           </a>
         </nav>
 
-        <div class="flex gap-2 justify-between">
-          <UColorModeButton class="cursor-pointer"/>
-          <div
-            class="flex h-9 w-9 items-center justify-center rounded-full bg-primary text-white text-sm cursor-pointer" @click="navigateTo('/profile')"
+        <div class="flex gap-[3px] justify-between">
+          <UColorModeButton class="cursor-pointer" />
+          <!-- <div
+            class="flex h-9 w-9 items-center justify-center rounded-full bg-primary text-white text-sm cursor-pointer"
+            @click="navigateTo('/profile')"
           >
             KE
-          </div>
+          </div> -->
         </div>
       </div>
     </UContainer>
@@ -50,10 +50,9 @@ export default {
   name: "Header",
   data() {
     return {
-      currentPath: "/workouts",
+      currentPath: "/workout",
       navItems: [
-        { name: "Workouts", href: "/workouts" },
-        { name: "My Exercises", href: "/exercises" },
+        { name: "Workouts", href: "/workout" },
         { name: "My Sets", href: "/sets" },
       ],
     };
