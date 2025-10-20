@@ -14,7 +14,7 @@
         You don't have any training sessions
       </h2>
       <p class="text-gray-500 mb-6">Let's create your first workout</p>
-      <UButton size="lg" icon="i-heroicons-plus" @click="handleCreateWorkout">
+      <UButton size="lg" icon="i-heroicons-plus" @click="handleModalOpen">
         Create workout
       </UButton>
     </div>
@@ -22,7 +22,7 @@
     <div v-else class="space-y-4">
       <div class="flex justify-between items-center mb-6">
         <h1 class="text-3xl font-bold">My workouts</h1>
-        <UButton icon="i-heroicons-plus" @click="handleCreateWorkout">
+        <UButton icon="i-heroicons-plus" @click="handleModalOpen">
           Create
         </UButton>
       </div>
@@ -40,45 +40,50 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
-import type { Workout } from "@/shared/types/workout";
 import WrapperLoader from "@/components/ui/WrapperLoader.vue";
 import WorkoutCard from "@/components/modules/workout/WorkoutCard.vue";
 import WorkoutModal from "@/components/modules/workout/WorkoutModal.vue";
-import { mockUser } from "@/shared/mockData";
 
 const toast = useToast();
-const workouts = ref<Workout[]>([]);
+const { workouts, createWorkout } = useWorkoutStorage();
 const loading = ref(true);
 const isModalOpen = ref(false);
 
 const fetchWorkouts = async () => {
   loading.value = true;
   try {
-    await new Promise((resolve) => setTimeout(resolve, 500));
-    workouts.value = mockUser.workouts || [];
+    await new Promise((resolve) => setTimeout(resolve, 300));
   } catch (error) {
     console.error("Error fetching workouts:", error);
     toast.add({
       title: "Error",
       description: "Couldn't upload workouts",
-      color: "red",
+      color: "primary",
     });
-    workouts.value = [];
   } finally {
     loading.value = false;
   }
 };
 
-const handleCreateWorkout = () => {
+const handleModalOpen = () => {
   isModalOpen.value = true;
 };
 
-const handleWorkoutCreate = (data: any) => {
-  console.log("Creating a workout:", data);
+const handleWorkoutCreate = (data: {
+  title: string;
+  date: string;
+  description?: string;
+}) => {
+  createWorkout({
+    title: data.title,
+    user_id: "current_user",
+    date: new Date(data.date),
+  });
+
   toast.add({
     title: "Success",
     description: "Workout created",
-    color: "green",
+    color: "primary",
   });
 };
 

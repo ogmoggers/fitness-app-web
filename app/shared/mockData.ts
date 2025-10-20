@@ -1,14 +1,14 @@
-import type { SetData } from "./types/Set";
+import type { Set } from "./types/Set";
 import type { Exercise } from "./types/Exercise";
-import type { Workout } from "./types/Workout";
-import type { User } from "./types/User";
+import type { Workout } from "./types/workout";
+import type { User } from "./types/user";
 
 const USER_ID = "user-777-g";
 const WORKOUT_ID = "wkt-555-e";
 const EXERCISE_ID_BENCH = "ex-444-bench";
 const EXERCISE_ID_SQUAT = "ex-666-squat";
 
-export const mockSetBench1: SetData = {
+export const mockSetBench1: Set = {
   id: "set-111-bench-1",
   weight: 45.5,
   reps: 10,
@@ -18,7 +18,7 @@ export const mockSetBench1: SetData = {
   updated_at: new Date("2025-10-19T10:00:00Z"),
 };
 
-export const mockSetBench2: SetData = {
+export const mockSetBench2: Set = {
   id: "set-222-bench-2",
   weight: 50,
   reps: 8,
@@ -28,7 +28,7 @@ export const mockSetBench2: SetData = {
   updated_at: new Date("2025-10-19T10:02:00Z"),
 };
 
-export const mockSetSquat: SetData = {
+export const mockSetSquat: Set = {
   id: "set-333-squat-1",
   weight: 100,
   reps: 5,
@@ -38,12 +38,13 @@ export const mockSetSquat: SetData = {
   updated_at: new Date("2025-10-19T11:00:00Z"),
 };
 
-export const mockSets: SetData[] = [mockSetBench1, mockSetBench2, mockSetSquat];
+export const mockSets: Set[] = [mockSetBench1, mockSetBench2, mockSetSquat];
 
 export const mockExerciseBench: Exercise = {
   id: EXERCISE_ID_BENCH,
   workout_id: WORKOUT_ID,
-  exercise_library_id: "LIB-BENCH-PRESS-1",
+  title: "LIB BENCHPRESS 1",
+  exercise_library_id: "",
   rest_seconds: 90,
   order_index: 0,
   sets: [mockSetBench1, mockSetBench2], // Жим лежа
@@ -56,6 +57,7 @@ export const mockExerciseBench: Exercise = {
 export const mockExerciseSquat: Exercise = {
   id: EXERCISE_ID_SQUAT,
   workout_id: WORKOUT_ID,
+  title: "LIB SQUAT 2",
   exercise_library_id: "LIB-SQUAT-2",
   rest_seconds: 120,
   order_index: 1,

@@ -3,6 +3,7 @@ import type { SetData } from "./Set";
 export type Exercise = {
   id: string;
   workout_id: string;
+  title: string;
   exercise_library_id: string;
   rest_seconds: number;
   order_index: number;

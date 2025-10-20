@@ -24,7 +24,7 @@
             <label class="block text-lg font-medium mb-2">Date and time</label>
             <UPopover :popper="{ placement: 'bottom-start' }">
               <UButton
-                color="white"
+                color="primary"
                 variant="solid"
                 size="lg"
                 block
@@ -38,10 +38,7 @@
                 <UCalendar
                   v-model="formData.date"
                   @update:model-value="
-                    (date) => {
-                      handleDateChange(date);
-                      close();
-                    }
+                    
                   "
                 />
               </template>
@@ -112,7 +109,11 @@ const handleDateChange = (
 };
 
 const handleSubmit = (data: Record<string, any>) => {
-  emit("submit", data);
+  emit("submit", {
+    title: data.title as string,
+    date: data.date as string,
+    description: data.description as string | undefined,
+  });
   emit("update:modelValue", false);
 };
 </script>

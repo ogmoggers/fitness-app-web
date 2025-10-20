@@ -1,4 +1,4 @@
-export type SetData = {
+export type Set = {
   id: string;
   weight: number;
   reps: number;

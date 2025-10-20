@@ -31,41 +31,42 @@
           </a>
         </nav>
 
-        <div class="flex gap-[3px] justify-between">
+        <div class="flex gap-2 justify-end items-center">
           <UColorModeButton class="cursor-pointer" />
-          <!-- <div
-            class="flex h-9 w-9 items-center justify-center rounded-full bg-primary text-white text-sm cursor-pointer"
-            @click="navigateTo('/profile')"
+          <UButton
+            v-if="isAuthenticated"
+            variant="ghost"
+            size="sm"
+            @click="handleLogout"
           >
-            KE
-          </div> -->
+            Выйти
+          </UButton>
         </div>
       </div>
     </UContainer>
   </header>
 </template>
 
-<script>
-export default {
-  name: "Header",
-  data() {
-    return {
-      currentPath: "/workout",
-      navItems: [
-        { name: "Workouts", href: "/workout" },
-        { name: "My Sets", href: "/sets" },
-      ],
-    };
-  },
-  methods: {
-    isActive(href) {
-      return this.currentPath === href;
-    },
-    navigateTo(href) {
-      this.currentPath = href;
-      this.$router.push(href);
-    },
-  },
+<script setup lang="ts">
+const route = useRoute();
+const router = useRouter();
+const { isAuthenticated, logout } = useAuth();
+
+const navItems = [
+  { name: "Workouts", href: "/workout" },
+  { name: "My Sets", href: "/sets" },
+];
+
+const isActive = (href: string) => {
+  return route.path === href;
+};
+
+const navigateTo = (href: string) => {
+  router.push(href);
+};
+
+const handleLogout = async () => {
+  await logout();
 };
 </script>
 
