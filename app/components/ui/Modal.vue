@@ -10,27 +10,27 @@
     >
       <div
         v-if="isOpen"
-        class="fixed inset-0 z-[1000] flex items-center justify-center px-4 py-6 sm:p-6 bg-gray-900/75 dark:bg-gray-950/80 backdrop-blur-sm"
+        class="fixed inset-0 z-[500] flex items-center justify-center px-4 py-6 sm:p-6 bg-gray-900/75 dark:bg-gray-950/80 backdrop-blur-sm"
         @click.self="handleBackdropClick"
       >
         <Card
           v-if="isOpen"
-          class="relative w-full max-w-lg max-h-[85vh] overflow-y-auto bg-white dark:bg-gray-900 ring-1 ring-gray-200 dark:ring-gray-800 shadow-xl"
+          class="relative md:p-5 p-4 rounded-lg w-full max-w-lg max-h-[85vh] overflow-y-auto bg-white dark:bg-gray-900 ring-1 ring-gray-200 dark:ring-gray-800 shadow-xl"
         >
           <template #header>
             <div class="flex items-center justify-between gap-4">
-              <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+              <h3 class="text-xl font-semibold">
                 <slot name="title">{{ title }}</slot>
               </h3>
-              <button
+              <UButton
                 v-if="showClose"
                 type="button"
-                class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
+                class="p-2 rounded-lg cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
                 @click="close"
                 aria-label="Close"
               >
                 <UIcon name="i-heroicons-x-mark-20-solid" class="w-5 h-5" />
-              </button>
+              </UButton>
             </div>
           </template>
 

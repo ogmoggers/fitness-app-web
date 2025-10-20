@@ -1,5 +1,5 @@
 <template>
-  <UCard>
+  <Card>
     <div class="flex items-start justify-between mb-3">
       <div class="flex items-center gap-2">
         <span class="text-lg font-semibold text-primary">#{{ index + 1 }}</span>
@@ -24,11 +24,12 @@
       <span>Total: {{ exercise.total_weight }} kg</span>
       <span>{{ exercise.total_reps }} reps</span>
     </div>
-  </UCard>
+  </Card>
 </template>
 
 <script setup lang="ts">
 import type { Exercise } from "@/shared/types/exercise";
+import Card from "@/components/ui/Card.vue";
 import SetRow from "@/components/modules/set/SetRow.vue";
 
 interface Props {

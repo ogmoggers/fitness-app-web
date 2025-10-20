@@ -8,9 +8,7 @@
       <template #default="{ formData, updateField }">
         <div class="space-y-6">
           <div>
-            <label
-              class="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300"
-            >
+            <label class="block text-lg font-medium mb-2">
               Название тренировки
             </label>
             <UInput
@@ -23,18 +21,31 @@
           </div>
 
           <div>
-            <label
-              class="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300"
-            >
-              Дата и время
-            </label>
-            <UInput
-              :model-value="formData.date"
-              type="datetime-local"
-              size="lg"
-              class="w-full"
-              @update:model-value="updateField('date', $event)"
-            />
+            <label class="block text-lg font-medium mb-2">Дата и время</label>
+            <UPopover :popper="{ placement: 'bottom-start' }">
+              <UButton
+                color="white"
+                variant="solid"
+                size="lg"
+                block
+                class="justify-start text-left"
+                icon="i-heroicons-calendar-days-20-solid"
+              >
+                {{ formatDate(formData.date) }}
+              </UButton>
+
+              <template #panel="{ close }">
+                <UCalendar
+                  v-model="formData.date"
+                  @update:model-value="
+                    (date) => {
+                      handleDateChange(date);
+                      close();
+                    }
+                  "
+                />
+              </template>
+            </UPopover>
           </div>
 
           <div>
@@ -78,8 +89,26 @@ const isOpen = computed({
 
 const initialFormData = {
   title: "",
-  date: new Date().toISOString().slice(0, 16),
+  date: new Date().toISOString(),
   description: "",
+};
+
+const formatDate = (dateString: string): string => {
+  const date = new Date(dateString);
+  return new Intl.DateTimeFormat("ru-RU", {
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  }).format(date);
+};
+
+const handleDateChange = (
+  date: Date,
+  updateField: (field: string, value: any) => void
+) => {
+  updateField("date", date.toISOString());
 };
 
 const handleSubmit = (data: Record<string, any>) => {

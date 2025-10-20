@@ -32,7 +32,7 @@
       />
     </div>
 
-    <!-- <WorkoutModal v-model="isModalOpen" @submit="handleWorkoutCreate" /> -->
+    <WorkoutModal v-model="isModalOpen" @submit="handleWorkoutCreate" />
   </div>
 </template>
 
@@ -41,6 +41,7 @@ import { ref, onMounted } from "vue";
 import type { Workout } from "@/shared/types/workout";
 import WrapperLoader from "@/components/ui/WrapperLoader.vue";
 import WorkoutCard from "@/components/modules/workout/WorkoutCard.vue";
+import WorkoutModal from "@/components/modules/workout/WorkoutModal.vue";
 import { mockUser } from "@/shared/mockData";
 
 const toast = useToast();
