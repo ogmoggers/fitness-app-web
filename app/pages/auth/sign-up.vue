@@ -93,9 +93,10 @@ import { validateRegister, type RegisterInput } from "@/shared/utils/auth";
 
 definePageMeta({ layout: "auth" });
 
+const { signUp, loading } = useAuth();
 const error = ref("");
 
-const handleRegister = (data: Record<string, any>) => {
+const handleRegister = async (data: Record<string, any>) => {
   error.value = "";
   const result = validateRegister(data);
 
@@ -106,11 +107,13 @@ const handleRegister = (data: Record<string, any>) => {
   }
 
   const validData = result.data as RegisterInput;
+  const response = await signUp(validData.email, validData.password);
 
-  // TODO: Реализовать регистрацию пользователя когда в бэке будет
-  console.log("Registration:", {
-    email: validData.email,
-    password: validData.password,
-  });
+  if (!response.success) {
+    error.value = response.error || "Ошибка при регистрации";
+    return;
+  }
+
+  await navigateTo("/");
 };
 </script>

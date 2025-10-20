@@ -74,9 +74,11 @@ import Form from "@/components/ui/Form.vue";
 import { validateLogin, type LoginInput } from "@/shared/utils/auth";
 
 definePageMeta({ layout: "auth" });
+
+const { signIn, loading } = useAuth();
 const error = ref("");
 
-const handleSignUp = (data: Record<string, any>) => {
+const handleSignUp = async (data: Record<string, any>) => {
   error.value = "";
   const result = validateLogin(data);
 
@@ -87,11 +89,13 @@ const handleSignUp = (data: Record<string, any>) => {
   }
 
   const validData = result.data as LoginInput;
+  const response = await signIn(validData.email, validData.password);
 
-  // TODO: Реализовать вход пользователя когда в бэке будет
-  console.log("Login:", {
-    email: validData.email,
-    password: validData.password,
-  });
+  if (!response.success) {
+    error.value = response.error || "Ошибка при входе";
+    return;
+  }
+
+  await navigateTo("/");
 };
 </script>

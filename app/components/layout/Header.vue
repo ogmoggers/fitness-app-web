@@ -9,9 +9,9 @@
           <div
             class="flex h-9 w-9 items-center justify-center rounded-lg bg-primary text-white font-bold"
           >
-            FT
+            MG
           </div>
-          <span class="text-lg font-semibold hidden md:block">FitTracker</span>
+          <span class="text-lg font-semibold hidden md:block">MoggersGym</span>
         </div>
 
         <nav class="flex justify-center items-center gap-1">
@@ -39,7 +39,7 @@
             size="sm"
             @click="handleLogout"
           >
-            Выйти
+            Logout
           </UButton>
         </div>
       </div>
