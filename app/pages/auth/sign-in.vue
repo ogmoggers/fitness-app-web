@@ -96,6 +96,6 @@ const handleSignUp = async (data: Record<string, any>) => {
     return;
   }
 
-  await navigateTo("/");
+  await navigateTo("/workout");
 };
 </script>
