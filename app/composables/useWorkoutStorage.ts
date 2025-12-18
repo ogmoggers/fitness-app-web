@@ -4,7 +4,17 @@ import type { Exercise } from "@/shared/types/Exercise";
 export const useWorkoutStorage = () => {
   const STORAGE_KEY = "fitness_workouts";
   const { data: workouts } = useLocalStorage<Workout[]>(STORAGE_KEY, []);
-
+  // TODO
+  //   const todos = ref([])
+  //
+  //   async function getTodos() {
+  //       const { data } = await supabase.from('todos').select()
+  //       todos.value = data
+  //   }
+  //
+  //   onMounted(() => {
+  //       getTodos()
+  //   })
   const getWorkoutById = (id: string) => {
     return workouts.value.find((w) => w.id === id) || null;
   };
