@@ -5,38 +5,38 @@ export default {
     {
       name: 'home',
       path: '/',
-      component: () => import('~/pages/PageHome.vue'),
+      component: () => import('@/pages/PageHome.vue'),
     },
 
     // auth
     {
       name: 'signIn',
-      path: '/sign-in',
-      component: () => import('~/pages/auth/PageSignIn.vue'),
+      path: '/auth/sign-in',
+      component: () => import('@/pages/auth/PageSignIn.vue'),
     },
     {
       name: 'signUp',
-      path: '/sign-up',
-      component: () => import('~/pages/auth/PageSignUp.vue'),
+      path: '/auth/sign-up',
+      component: () => import('@/pages/auth/PageSignUp.vue'),
     },
 
     // workout
     {
       name: 'workout',
       path: '/workout',
-      component: () => import('~/pages/workout/PageWorkout.vue'),
+      component: () => import('@/pages/workout/PageWorkout.vue'),
     },
     {
       name: 'workout-id',
       path: '/workout/:id',
-      component: () => import('~/pages/workout/PageWorkoutId.vue'),
+      component: () => import('@/pages/workout/PageWorkoutId.vue'),
     },
 
     // not found
-    {
-      name: 'not-found',
-      path: '/:pathMatch(.*)*',
-      component: () => import('~/pages/PageNotFound.vue'),
-    },
+    // {
+    //   name: 'not-found',
+    //   path: '/:pathMatch(.*)*',
+    //   component: () => import('@/pages/PageNotFound.vue'),
+    // },
   ],
 } satisfies RouterConfig

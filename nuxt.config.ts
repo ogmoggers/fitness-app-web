@@ -26,4 +26,5 @@ export default defineNuxtConfig({
       colors: ["primary"],
     },
   },
+  // experimental: { appManifest: false },
 });
