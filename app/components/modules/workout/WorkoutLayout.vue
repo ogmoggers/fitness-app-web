@@ -27,11 +27,14 @@
         </UButton>
       </div>
 
-      <WorkoutCard
-        v-for="workout in workouts"
-        :key="workout.id"
-        :workout="workout"
-      />
+      <TransitionGroup name="workout-list" tag="div" class="space-y-4" appear>
+        <WorkoutCard
+          v-for="(workout, index) in workouts"
+          :key="workout.id"
+          :workout="workout"
+          :style="{ '--delay': index * 0.1 + 's' }"
+        />
+      </TransitionGroup>
     </div>
 
     <WorkoutModal v-model="isModalOpen" @submit="handleWorkoutCreate" />
@@ -91,3 +94,29 @@ onMounted(() => {
   fetchWorkouts();
 });
 </script>
+
+
+<style scoped>
+.workout-list-enter-active {
+  transition: all 0.7s ease;
+  transition-delay: var(--delay);
+}
+
+.workout-list-enter-from {
+  opacity: 0;
+  transform: translateX(-50px);
+}
+
+.workout-list-leave-active {
+  transition: all 0.3s ease;
+}
+
+.workout-list-leave-to {
+  opacity: 0;
+  transform: translateX(50px);
+}
+
+.workout-list-move {
+  transition: transform 0.4s ease;
+}
+</style>

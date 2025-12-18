@@ -56,7 +56,7 @@
 
 <script setup lang="ts">
 import { computed, onMounted } from "vue";
-import type { Exercise } from "@/shared/types/Exercise";
+import type { Exercise } from "@/shared/types/exercise";
 import ExerciseCard from "@/components/modules/exercise/ExerciseCard.vue";
 import WrapperLoader from "@/components/ui/WrapperLoader.vue";
 import ExerciseModal from "@/components/modules/exercise/ExerciseModal.vue";
