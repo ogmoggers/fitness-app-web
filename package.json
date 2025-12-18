@@ -7,7 +7,8 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "test": "vitest"
   },
   "dependencies": {
     "@pinia/nuxt": "^0.11.2",
@@ -22,11 +23,15 @@
     "zod": "^4.1.12"
   },
   "devDependencies": {
+    "@nuxt/test-utils": "^3.21.0",
     "@nuxt/ui": "^4.0.1",
     "@types/node": "^24.8.1",
+    "@vue/test-utils": "^2.4.6",
     "autoprefixer": "^10.4.21",
+    "jsdom": "^27.3.0",
     "postcss": "^8.5.6",
     "tailwind-variants": "^3.1.1",
-    "tailwindcss": "^4.1.14"
+    "tailwindcss": "^4.1.14",
+    "vitest": "^4.0.16"
   }
 }
