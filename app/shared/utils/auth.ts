@@ -5,7 +5,7 @@ export const registerSchema = z
     email: z.string().min(1, "Email is required").email("Incorrect email"),
     password: z
       .string()
-      .min(8, "The password must be at least 8 characters long.")
+      .min(6, "The password must be at least 8 characters long.")
       .max(100, "The password is too long"),
     confirmPassword: z.string().min(1, "Password confirmation is required"),
   })

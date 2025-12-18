@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+import {supabase} from "~/shared/utils/supabase";
 
 interface AuthState {
   user: any | null;
@@ -30,8 +31,13 @@ export const useAuthStore = defineStore("auth", {
     async signIn(email: string, password: string) {
       this.loading = true;
       try {
-        // Firebase auth removed - будет заменено на Supabase
-        throw new Error("Auth temporarily disabled - Firebase removed");
+          const { data, error } = await supabase.auth.signInWithPassword({
+              email,
+              password,
+          })
+          this.user = data.user;
+          this.saveUserToStorage(data);
+          return {success: true, user: data.user}
       } catch (error: any) {
         return { success: false, error: this.handleAuthError(error) };
       } finally {
@@ -42,8 +48,13 @@ export const useAuthStore = defineStore("auth", {
     async signUp(email: string, password: string) {
       this.loading = true;
       try {
-        // Firebase auth removed - будет заменено на Supabase
-        throw new Error("Auth temporarily disabled - Firebase removed");
+          const { data, error } = await supabase.auth.signUp({
+              email,
+              password,
+          })
+          this.user = data.user;
+
+          return { success: true, user:data.user };
       } catch (error: any) {
         return { success: false, error: this.handleAuthError(error) };
       } finally {
@@ -54,7 +65,7 @@ export const useAuthStore = defineStore("auth", {
     async logout() {
       this.loading = true;
       try {
-        // Firebase auth removed - будет заменено на Supabase
+        await supabase.auth.signOut();
         this.user = null;
         this.clearUserFromStorage();
         return { success: true };
@@ -67,6 +78,7 @@ export const useAuthStore = defineStore("auth", {
 
     async getToken(): Promise<string | null> {
       // Firebase auth removed - будет заменено на Supabase
+      //   const user = await supabase.auth.getUser()
       return null;
     },
 

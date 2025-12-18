@@ -91,10 +91,6 @@ const handleSignUp = async (data: Record<string, any>) => {
   const validData = result.data as LoginInput;
   const response = await signIn(validData.email, validData.password);
 
-  if (!response.success) {
-    error.value = response.error || "Ошибка при входе";
-    return;
-  }
 
   await navigateTo("/workout");
 };

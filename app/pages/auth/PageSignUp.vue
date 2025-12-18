@@ -11,6 +11,7 @@
           :initialData="{ email: '', password: '', confirmPassword: '' }"
           submitText="Register"
           @submit="handleRegister"
+
         >
           <!-- <template #default="{ formData, updateField }"> -->
           <template v-slot="{ formData, updateField }">
@@ -30,7 +31,6 @@
                 required
               />
             </div>
-
             <div class="flex flex-col gap-2">
               <label for="password">Password</label>
               <UInput
@@ -108,12 +108,12 @@ const handleRegister = async (data: Record<string, any>) => {
 
   const validData = result.data as RegisterInput;
   const response = await signUp(validData.email, validData.password);
-
   if (!response.success) {
-    error.value = response.error || "Ошибка при регистрации";
-    return;
-  }
+      error.value = response.error || "Ошибка при регистрации";
+      return;
+    }
 
-  await navigateTo("/workout");
-};
+    await navigateTo("/workout");
+}
+
 </script>
