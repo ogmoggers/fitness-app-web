@@ -32,6 +32,7 @@ export default {
       component: () => import('@/pages/workout/PageWorkoutId.vue'),
     },
 
+
     // not found
     // {
     //   name: 'not-found',
