@@ -1,8 +1,21 @@
-import { defineVitestConfig } from "@nuxt/test-utils/config";
+import { defineConfig } from "vitest/config";
+import { defineVitestProject } from "@nuxt/test-utils/config";
 
-export default defineVitestConfig({
+export default defineConfig({
   test: {
-    environment: "nuxt",
-    globals: true,
+    projects: [
+      {
+        name: "unit",
+        include: ["test/{e2e,unit}/*.{test,spec}.ts"],
+        environment: "node",
+      },
+      await defineVitestProject({
+        test: {
+          name: "nuxt",
+          include: ["test/nuxt/*.{test,spec}.ts"],
+          environment: "nuxt",
+        },
+      }),
+    ],
   },
 });
