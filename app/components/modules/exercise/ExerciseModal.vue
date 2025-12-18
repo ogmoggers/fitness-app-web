@@ -31,49 +31,58 @@
           No sets added yet
         </div>
 
-        <div v-else class="max-h-[300px] overflow-y-auto space-y-2 pr-1">
-          <div
-            v-for="(set, index) in sets"
-            :key="set.id"
-            class="grid grid-cols-[auto_1fr_1fr_auto] items-center gap-3 p-3 rounded-lg bg-gray-50 dark:bg-gray-800"
-          >
-            <span class="text-gray-500 text-sm">{{ index + 1 }}</span>
-
-            <UInput
-              v-model.number="set.weight"
-              type="number"
-              placeholder="Weight"
-              size="sm"
+        <draggable
+          v-else
+          v-model="sets"
+          item-key="id"
+          handle=".drag-handle"
+          class="max-h-[300px] overflow-y-auto space-y-3 pr-1"
+          @end="onDragEnd"
+        >
+          <template #item="{ element: set, index }">
+            <div
+              class="grid grid-cols-[auto_1fr_1fr_auto] items-center gap-4 p-3 rounded-lg bg-gray-50 dark:bg-gray-800"
             >
-              <template #trailing>
-                <span class="text-gray-400 text-xs">kg</span>
-              </template>
-            </UInput>
-
-            <UInput
-              v-model.number="set.reps"
-              type="number"
-              placeholder="Reps"
-              size="sm"
-            >
-              <template #trailing>
-                <span class="text-gray-400 text-xs">reps</span>
-              </template>
-            </UInput>
-
-            <UButton
-              icon="i-heroicons-trash"
-              size="sm"
-              variant="ghost"
-              @click="removeSet(index)"
-            />
-          </div>
-        </div>
+              <span
+                class="drag-handle cursor-move text-gray-500 text-sm flex items-center gap-2"
+              >
+                <UIcon name="ei:navicon" class="size-5" />
+                {{ index + 1 }}
+              </span>
+              <UInput
+                v-model.number="set.weight"
+                type="number"
+                placeholder="Weight"
+                size="sm"
+              >
+                <template #trailing>
+                  <span class="text-gray-400 text-xs">kg</span>
+                </template>
+              </UInput>
+              <UInput
+                v-model.number="set.reps"
+                type="number"
+                placeholder="Reps"
+                size="sm"
+              >
+                <template #trailing>
+                  <span class="text-gray-400 text-xs">reps</span>
+                </template>
+              </UInput>
+              <UButton
+                icon="i-heroicons-trash"
+                size="sm"
+                variant="ghost"
+                @click="removeSet(index)"
+              />
+            </div>
+          </template>
+        </draggable>
       </div>
 
       <UButton
         size="lg"
-        class="w-full"
+        class="w-full justify-center"
         :disabled="!title || sets.length === 0"
         @click="handleSubmit"
       >
@@ -84,8 +93,14 @@
 </template>
 
 <script setup lang="ts">
+import draggable from "vuedraggable";
+const onDragEnd = () => {
+  sets.value.forEach((set, idx) => {
+    set.order_index = idx;
+  });
+};
 import Modal from "@/components/ui/Modal.vue";
-import type { Exercise } from "@/shared/types/Exercise";
+import type { Exercise } from "@/shared/types/exercise";
 import type { Set } from "@/shared/types/Set";
 
 interface Props {
