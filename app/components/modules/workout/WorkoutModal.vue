@@ -12,6 +12,7 @@
               Name of the workout
             </label>
             <UInput
+              id="workout"
               :model-value="formData.title"
               placeholder="For example: Chest and Triceps"
               size="lg"
@@ -52,6 +53,7 @@
               Description (optional)
             </label>
             <UTextarea
+              id="description"
               :model-value="formData.description"
               placeholder="Add a description of workout"
               :rows="4"
