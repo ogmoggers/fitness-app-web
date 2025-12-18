@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { mount } from "@vue/test-utils";
-
+import WorkoutModal from "~/components/modules/workout/WorkoutModal.vue";
 
 describe("WorkoutModal", () => {
   it("renders all form fields", () => {
@@ -24,13 +24,11 @@ describe("WorkoutModal", () => {
     const wrapper = mount(WorkoutModal, {
       props: { modelValue: true },
     });
-    // Найти кнопку закрытия модального окна
     const closeBtn = wrapper.find('[data-testid="modal-close"]');
     if (closeBtn.exists()) {
       await closeBtn.trigger("click");
       expect(wrapper.emitted("update:modelValue")).toBeTruthy();
     } else {
-      // Если нет data-testid, эмулируем set isOpen = false
       await wrapper.vm.$emit("update:modelValue", false);
       expect(wrapper.emitted("update:modelValue")).toBeTruthy();
     }
