@@ -34,10 +34,10 @@ export default {
 
 
     // not found
-    // {
-    //   name: 'not-found',
-    //   path: '/:pathMatch(.*)*',
-    //   component: () => import('@/pages/PageNotFound.vue'),
-    // },
+    {
+      name: 'not-found',
+      path: '/:pathMatch(.*)*',
+      component: () => import('@/pages/PageNotFound.vue'),
+    },
   ],
 } satisfies RouterConfig
